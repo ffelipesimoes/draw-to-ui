@@ -8,6 +8,8 @@ import { blobToBase64 } from "@/lib/blobToBase64";
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import { PreviewModal } from "@/components/PreviewModal";
+import { UserButton } from "@clerk/nextjs";
+
 
 const Tldraw = dynamic(async () => (await import("@tldraw/tldraw")).Tldraw, {
   ssr: false,
@@ -32,6 +34,7 @@ export default function Home() {
   return (
     <>
       <div className={`w-screen h-screen`}>
+      <UserButton afterSignOutUrl="/"/>
         <Tldraw persistenceKey="tldraw">
           <ExportButton setHtml={setHtml} />
         </Tldraw>
